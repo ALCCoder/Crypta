@@ -1,0 +1,256 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Lab container */
+.lab__container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-top: 150px;
+}
+
+
+/* Lab navigation */
+.lab__nav {
+    font-size: 20px;
+    line-height: 1;
+
+}
+
+.nav__list {
+    list-style-type: none;
+}
+
+.nav__element {
+    display: block;
+    margin-top: 10px;
+    padding-left: 5px;
+    
+    color: black;
+    text-decoration: none;
+    
+    transition: color .1s linear;
+}
+
+.nav__element:hover,
+.nav__element.active {
+    color: green;
+}
+
+.nav__element.active{
+    border-left: 2px solid  green;
+}
+
+/* Decision container */
+.decision__container {
+    display: table-column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.decision__container__project {
+    display: table-column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 100px auto;
+}
+
+/* Answer */
+.answer {
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+
+/* Form container */
+
+.form__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Lab form */
+
+.lab__form {
+    width: 500px;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid  green;
+}
+
+.from__title {
+    color: black;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 300;
+    
+    margin: 0 0 30px 0;
+}
+
+.form__group {
+    position: relative;
+
+    margin-bottom: 30px;
+}
+
+.form__label {
+    color: black;
+    font-size: 20px;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
+    transition: .1s;
+}
+
+.form__input {
+    color: black;
+    font-size: 20px;
+
+    width: 100%;
+    padding: 0 0 10px;
+    border: none;
+    border-bottom: 1px solid green;
+
+    background-color: transparent;
+    outline: 0;
+
+    transition: .1s;
+}
+
+.form__input:focus {
+    border-bottom: 1px solid green;
+}
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown) ~ .form__label {
+    top: -18px;
+    font-size: 12px;
+}
+
+
+/* button */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+
+    background: white;
+    border: 1px solid black;
+    outline: none;
+    cursor: pointer;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    color:black;
+    text-transform: uppercase;
+
+    border-radius: 5px;
+
+    transition: .1s linear, color .1s linear;
+}
+
+.btn:hover {
+    background: green;
+    border: 1px solid #240b36;
+    color: white;
+}
+
+/* Download button */
+.download_btn {
+    visibility: hidden;
+}
+
+
+/*  */
+.name__field {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* */
+.input__wrapper {
+    width: 100%;
+    position: relative;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.input__file {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.input__file-icon-wrapper {
+    height: 60px;
+    width: 60px;
+    min-width: 60px;
+    margin-right: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border-right: 1px solid #fff;
+}
+
+.input__file-button-text {
+    line-height: 1;
+    margin-top: 1px;
+}
+
+.input__file-button {
+    width: 100%;
+    max-width: 290px;
+    height: 60px;
+    background: #1bbc9b;
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    border-radius: 3px;
+    cursor: pointer;
+    /* margin: 0 auto; */
+}
+
+/* Progress bar */
+
+#myProgress {
+    width: 100%;
+    background-color: #ddd;
+}
+
+#myBar {
+    width: 10%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}

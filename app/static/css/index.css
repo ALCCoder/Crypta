@@ -1,0 +1,27 @@
+.epigram__content {
+    padding: 50px;
+    background-color: rgba(214, 214, 214, .5);
+    border-radius: 20px;
+    font-size: 25px;
+}
+
+.main__epigram {
+    text-align: left;
+}
+
+.author {
+    text-align: right;
+}
+
+.to__labs__link {
+    margin-top: 100px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.to__labs__link:hover {
+    color: green;
+}

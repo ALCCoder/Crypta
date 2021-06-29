@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirdlab</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lab.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="header__logo">
+                    Crypta
+                </div>
+                <nav class="nav">
+                    <a class="nav__link" href="/index">Home</a>
+                    <a class="nav__link" href="/lab1">Lab 1</a>
+                    <a class="nav__link" href="/lab2">Lab 2</a>
+                    <a class="nav__link active" href="#">Lab 3</a>
+                    <a class="nav__link" href="/project">Project</a>
+                </nav>
+            </div>
+            <hr class="header__line">
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="lab__container">
+            <nav class="lab__nav" id="labs_menu">
+                <ul class="nav__list">
+                    <li><a class="nav__element active" id="pol_form" onclick="pol_form()">Polynomial form</a></li>
+                    <li><a class="nav__element" id="bin_pol_form" onclick="bin_pol_form()">Mult of binary
+                            polynomials</a>
+                    </li>
+                    <li><a class="nav__element" id="mult_inverse" onclick="mult_inverse()">Find mult inverse</a></li>
+                    <li><a class="nav__element" id="rijndael" onclick="rijndael()">Rijndael</a></li>
+                </ul>
+            </nav>
+
+            <div class="decision__container">
+                <div class="answer" id="answer"></div>
+                <div class="form__container" id="form">
+                    <form class="lab__form" name="lab_form">
+                        <div class="from__title">Enter data</div>
+                        <div class="form__group">
+                            <input class="form__input" name="first_data" placeholder=" ">
+                            <label class="form__label">Number (base 2 GF256)</label>
+                        </div>
+                        <div onclick="submit_click()" class="btn">SEND</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <hr class="header__line">
+    </footer>
+    <script src="{{ url_for('static', filename='js/index_lab3.js') }}"></script>
+</body>
+
+</html>

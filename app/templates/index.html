@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="header__logo">
+                    Crypta
+                </div>
+                <nav class="nav">
+                    <a class="nav__link active" href='#'>Home</a>
+                    <a class="nav__link" href="/lab1">Lab 1</a>
+                    <a class="nav__link" href="/lab2">Lab 2</a>
+                    <a class="nav__link" href="/lab3">Lab 3</a>
+                    <a class="nav__link" href="/project">Project</a>
+                </nav>
+            </div>
+            <hr class="header__line">
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="epigram__content">
+            <div class="main__epigram">
+                "One man's constant is another man's variable." -
+            </div>
+            <div class="author">
+                Alan Perlis
+            </div>
+        </div>
+        <a class="to__labs__link" href="/lab1">-> Go to labs &lt-</a>
+    </main>
+
+    <footer class="footer">
+        <hr class="header__line">
+    </footer>
+</body>
+
+</html>
