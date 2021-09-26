@@ -11,7 +11,7 @@ import time
 import random
 import os
 
-UPLOAD_FOLDER = f'{os.getcwd()}\Downloads'
+UPLOAD_FOLDER = f'{os.getcwd()}/Downloads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
