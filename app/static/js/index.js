@@ -141,6 +141,38 @@ function submit_des_click() {
     }
 }
 
+function submit_rsa_click() {
+    console.log('submit rsa');
+
+    var form = new FormData(document.forms.lab_form);
+    form.append('check_enc_dec', get_radio_value());
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "http://127.0.0.1:5000/rsa");
+    xhr.send(form)
+
+    var answer = document.getElementById("answer");
+    answer.innerHTML = 'Wait...';
+
+    xhr.onload = function () {
+        console.log(xhr.response);
+        var ans = JSON.parse(xhr.response)
+        if (ans.err != undefined) {
+            answer.innerHTML = ans.err
+        }
+        else {
+            delete_answer()
+            path = ans.res;
+            console.log(path)
+
+            down_btn_ctr = document.getElementById('download_btn');
+            down_btn_ctr.setAttribute("class", "btn")
+            down_btn_ctr.hidden = false;
+        }
+    }
+}
+
 function des_modes_click(mode) {
     des_mode = mode;
     console.log('des_mode ' + des_mode);
@@ -614,6 +646,67 @@ function rc4() {
         </div>
         <div onclick="submit_rc4_click()" class="btn">SEND</div>
         <div onclick="download()" id="download_btn" class="btn download_btn">Download</div>
+    </form>`;
+    load_add_form();
+}
+
+function rsa() {
+    case_lab = 'rsa'
+    set_active('rsa')
+
+    var form = document.getElementById("form");
+    form.innerHTML = `
+    <form class="lab__form" name="lab_form">
+        <div class="from__title">Enter data</div>
+        <div style="padding: 0px 0px 20px 0px;">
+            <div style="padding: 10px 0px;">
+                <div class="name__field">
+                    data
+                </div>
+                <div class="input__wrapper">
+                    <input name="datafile" id="input_data_file" type="file" class="input input__file">
+                    <label for="input_data_file" class="input__file-button">
+                        <span class="input__file-icon-wrapper"><img class="input__file-icon" src= "static/img/add.svg" alt="Выбрать файл" width="25"></span>
+                        <span class="input__file-button-text" id="data_label">Выберите файл</span>
+                    </label>
+                </div>
+            </div>
+            <div id="key_field" hidden="true" style="padding: 10px 0px;">
+                <div class="name__field">
+                    key
+                </div>
+                <div class="input__wrapper">
+                    <input name="keyfile" id="input_key_file" type="file" class="input input__file">
+                    <label for="input_key_file" class="input__file-button">
+                        <span class="input__file-icon-wrapper"><img class="input__file-icon" src= "static/img/add.svg" alt="Выбрать файл" width="25"></span>
+                        <span class="input__file-button-text" id="key_label">Выберите файл</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <p><input type="radio" name="enc_dec" onclick="rsa_radio_click()" id="radio_enc" checked>ENC <input type="radio" name="enc_dec" onclick="rsa_radio_click()" id="radio_dec">DEC</p>
+        <div onclick="submit_rsa_click()" class="btn">SEND</div>
+        <div onclick="download()" id="download_btn" class="btn download_btn">Download</div>
+    </form>`;
+    load_add_form();
+}
+
+function rsa_hack() {
+    case_lab = 'rsa_hack'
+    set_active('rsa_hack')
+
+    var form = document.getElementById("form");
+    form.innerHTML = `
+    <form class="lab__form" name="lab_form">
+        <div class="from__title">Enter data</div>
+        <div style="padding: 0px 0px 20px 0px;">
+            <div style="padding: 10px 0px;">
+                
+            </div>
+        </div>
+        <p><input type="radio" name="enc_dec" onclick="rsa_radio_click()" id="radio_enc" checked>ENC <input type="radio" name="enc_dec" onclick="rsa_radio_click()" id="radio_dec">DEC</p>
+        <div onclick="" class="btn">SEND</div>
+        <div onclick="" id="download_btn" class="btn download_btn">Download</div>
     </form>`;
     load_add_form();
 }

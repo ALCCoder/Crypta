@@ -1,14 +1,14 @@
-'''
+"""
 
-'''
+"""
 
 from processing import check_correct_lab1
-from laba1 import bit_operations, vernam, RC4, des
+from laba1 import bit_operations, des
 
 
 def get_bit_proc(jsdata):
     #
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, bit, err = check_correct_lab1.check_bit(values_list)
     if err is None:
@@ -17,7 +17,7 @@ def get_bit_proc(jsdata):
 
 
 def change_bit_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, bit, err = check_correct_lab1.check_bit(values_list)
     if err is None:
@@ -26,7 +26,7 @@ def change_bit_proc(jsdata):
 
 
 def swap_bits_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, i_bit, j_bit, err = check_correct_lab1.check_swap_bits(values_list)
     if err is None:
@@ -35,7 +35,7 @@ def swap_bits_proc(jsdata):
 
 
 def zero_bits_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, m, err = check_correct_lab1.check_zero_bits(values_list)
     if err is None:
@@ -44,7 +44,7 @@ def zero_bits_proc(jsdata):
 
 
 def splice_bits_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, i, err = check_correct_lab1.check_spmid_bits(values_list)
     if err is None:
@@ -53,7 +53,7 @@ def splice_bits_proc(jsdata):
 
 
 def middle_bits_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, m, err = check_correct_lab1.check_spmid_bits(values_list)
     if err is None:
@@ -62,7 +62,7 @@ def middle_bits_proc(jsdata):
 
 
 def change_bytes_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, rearr, err = check_correct_lab1.check_change_bytes(values_list)
     if err is None:
@@ -71,7 +71,7 @@ def change_bytes_proc(jsdata):
 
 
 def max_pow_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, err = check_correct_lab1.check_pow_range(values_list)
     if err is None:
@@ -80,17 +80,18 @@ def max_pow_proc(jsdata):
 
 
 def xor_all_bits_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, err = check_correct_lab1.check_xor_all_bits(values_list)
     if err is None:
-        # !!! Error
-        return bit_operations.xor_all_bits(val, 32)
+        length = val.bit_length()
+        return bit_operations.xor_all_bits(val, 1 << (length - 1))
+
     return err
 
 
 def within_range_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, err = check_correct_lab1.check_pow_range(values_list)
     if err is None:
@@ -99,7 +100,7 @@ def within_range_proc(jsdata):
 
 
 def change_bits_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, rearr, err = check_correct_lab1.check_change_bits(values_list)
     if err is None:
@@ -108,52 +109,50 @@ def change_bits_proc(jsdata):
 
 
 def cycle_shift_left_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, n, p, err = check_correct_lab1.check_cycle_shift(values_list)
     if err is None:
-        return bin(bit_operations.cycle_shift_left(
-            val & ((1 << p) - 1), n, p))[2:]
+        return bin(bit_operations.cycle_shift_left(val & ((1 << p) - 1), n, p))[2:]
     return err
 
 
 def cycle_shift_right_proc(jsdata):
-    values_list = jsdata['values_list']
+    values_list = jsdata["values_list"]
 
     val, n, p, err = check_correct_lab1.check_cycle_shift(values_list)
     if err is None:
-        return bin(bit_operations.cycle_shift_right(
-            val & ((1 << p) - 1), n, p))[2:]
+        return bin(bit_operations.cycle_shift_right(val & ((1 << p) - 1), n, p))[2:]
     return err
 
 
 def vernam_proc(data_file_name, key_file_name, res_file_name):
     #
-    with open(data_file_name, 'rb') as f_data:
+    with open(data_file_name, "rb") as f_data:
         data_bytes = f_data.read()
 
-    with open(key_file_name, 'rb') as f_key:
+    with open(key_file_name, "rb") as f_key:
         key_bytes = f_key.read()
 
     if len(data_bytes) != len(key_bytes):
-        raise Exception('Error')
+        raise Exception("Error")
 
     res = vernam.vernam(data_bytes, key_bytes)
 
-    with open(res_file_name, 'wb') as f_res:
+    with open(res_file_name, "wb") as f_res:
         f_res.write(res)
 
 
 def rc4_proc(data_file_name, key_file_name, res_file_name):
-    with open(data_file_name, 'rb') as f_data:
+    with open(data_file_name, "rb") as f_data:
         data_bytes = f_data.read()
 
-    with open(key_file_name, 'rb') as f_key:
+    with open(key_file_name, "rb") as f_key:
         key_bytes = f_key.read()
 
     rc4 = RC4.RC4()
 
     res = rc4(data_bytes, key_bytes)
 
-    with open(res_file_name, 'wb') as f_res:
+    with open(res_file_name, "wb") as f_res:
         f_res.write(res)

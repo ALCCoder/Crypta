@@ -1,20 +1,12 @@
-'''
+"""
 
-'''
+"""
 import math
-
-
-def _get_bit(number):
-    # return 1 if bool(number) else 0
-    if number:
-        return 1
-    else:
-        return 0
 
 
 def get_bit_k_pos(number: int, k: int) -> int:
     #
-    return _get_bit(number & (1 << (k - 1)))
+    return number & (1 << (k - 1))
 
 
 def change_bit_k_pos(number: int, k: int) -> int:
@@ -45,14 +37,14 @@ def splice_bits(number: int, i: int) -> int:
 
 def get_middle_bits(number: int, i: int) -> int:
     length = number.bit_length()
-    return (number >> i) & ((1 << (length - 2 * i)) - 1)
+    return (number >> i) & ((1 << (length - (i << 1))) - 1)
 
 
 def change_bytes_order(number: int, order: list) -> int:
-    '''
+    """
     Return number with changed bytes in input `order`
     order - [1, 3, 2, 4] (left to right)
-    '''
+    """
     number_bytes = []
     for _ in range(4):
         b = number & ((1 << 8) - 1)
@@ -89,7 +81,7 @@ def xor_all_bits(number, p):
         number = (number >> (p >> 1)) ^ (number & ((1 << (p >> 1)) - 1))
         p >>= 1
 
-    return _get_bit(number)
+    return number
 
 
 def transpose_bits(number, arr):
@@ -113,3 +105,7 @@ def cycle_shift_right(number, p, n):
     #
     p = p % n
     return (number >> p) | ((number & (1 << p) - 1) << (n - p))
+
+
+if __name__ == "__main__":
+    print(get_bit_k_pos(2, 1))
