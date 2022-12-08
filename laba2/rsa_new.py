@@ -92,6 +92,12 @@ def is_prime(n):
 
 
 class RSA:
+    '''
+    !!!
+    # 0 <= m <= n - 1
+    # 1 < e < f(n) = (p - 1) * (q - 1)
+    '''
+
     def __init__(self):
         p = RSA.gen()
         q = RSA.gen()
