@@ -101,6 +101,9 @@ class RSA:
     def __init__(self):
         p = RSA.gen()
         q = RSA.gen()
+        while p == q:
+            q = RSA.gen()
+        
         self.n = p * q
 
         f = (p - 1) * (q - 1)
